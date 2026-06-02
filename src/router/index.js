@@ -5,11 +5,19 @@ import HomeView from '../views/HomeView.vue'
 import AboutView from '../views/AboutView.vue'
 import ContactView from '../views/ContactView.vue'
 
+import ProductView from '../views/ProductView.vue'
+
+import DashboardView from '../views/DashboardView.vue'
+import ProfileView from '../views/ProfileView.vue'
+import ConfigurationView from '../views/ConfigurationView.vue'
+import NotFoundView from '../views/NotFoundView.vue'
+
 
 const routes = [
     {
         path: '/',
-        component: HomeView
+        component: HomeView,
+        alias: '/home'
     },
     {
         path: '/about',
@@ -17,7 +25,40 @@ const routes = [
     },
     {
         path: '/contact',
-        component: ContactView
+        component: ContactView,
+        alias: [
+            '/contacto',
+            '/contact-us',
+            '/contactanos',
+            '/contactar'
+        ]
+    },
+    {
+        path: "/product/:id",
+        component: ProductView,
+        props: true
+    },
+    {
+        path: "/dashboard",
+        component: DashboardView,
+        children: [
+            {
+                path: "profile",
+                component: ProfileView
+            },
+            {
+                path: "configuration",
+                component: ConfigurationView
+            }
+        ]
+    },
+    {
+        path: "/:pathMatch(.*)*",
+        component: NotFoundView
+    },
+    {
+        path: "/inicio",
+        redirect: "/"
     }
 ]
 

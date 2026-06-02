@@ -14,6 +14,9 @@
             <textarea placeholder="Message"></textarea>
             <button type="submit">Send</button>
         </form>
+
+        <router-link to="/">Home</router-link>
+
     </div>
 </template>
 
