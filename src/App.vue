@@ -36,7 +36,8 @@
     <div class="router-container">
     <router-view v-slot="{ Component, route }">
       
-      <transition name="fade">
+ <!-- <transition name="fade"> -->
+      <transition :name="route.meta.transition || 'fade'">
       
         <component
           :is="Component"
@@ -48,6 +49,7 @@
 
     </router-view>
     </div>
+  
 
 </div>
 </template>
@@ -101,13 +103,15 @@ nav a.anidacion{
 
 
 
+
+
+
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 1s ease;
   position: absolute;
   width: 100%;
 }
-
 
 .fade-enter-from{
   opacity: 0;
@@ -118,8 +122,6 @@ nav a.anidacion{
 }
 
 
-
-
 .fade-leave-from {
   opacity: 1;
 }
@@ -128,36 +130,100 @@ nav a.anidacion{
   opacity: 0;
 }
 
-/* ACTIVE */
-/* .pato-enter-active{
+
+
+
+
+.fade-slow-enter-active,
+.fade-slow-leave-active {
+  transition: opacity 3s ease;
+  position: absolute;
+  width: 100%;
+}
+
+.fade-slow-enter-from,
+.fade-slow-leave-to {
+  opacity: 0;
+}
+
+.fade-slow-enter-to,
+.fade-slow-leave-from {
+  opacity: 1;
+}
+
+
+
+.slide-left-enter-active,
+.slide-left-leave-active {
+  transition: all .3s ease;
+}
+
+.slide-left-enter-from {
+  transform: translateX(100%);
+}
+
+.slide-left-leave-to {
+  transform: translateX(-100%);
+}
+
+
+
+
+
+.slide-right-enter-active,
+.slide-right-leave-active {
+  transition: all .3s ease;
+}
+
+.slide-right-enter-from {
+  transform: translateX(-100%);
+}
+
+.slide-right-leave-to {
+  transform: translateX(100%);
+}
+
+
+
+/* 
+
+ACTIVE
+.demo-enter-active{
   transition: all 3s ease;
 }
-.pato-leave-active{
+
+.demo-leave-active{
   transition: all 1s ease;
-} */
+}
+  
 
 
-/* ENTER     (el nuevo componente)*/
-/* .pato-enter-from{
+ENTER     (el nuevo componente)
+
+.demo-enter-from{
   opacity: 0;
   transform: translateY(100px);
 }
-.pato-enter-to{
-  transform: translateY(0px);
-}
- */
-
-
-
-/* LEAVE   (el actual componente) */
-/* .pato-leave-from{
+.demo-enter-to{
   transform: translateY(0px);
 }
 
-.pato-leave-to{
+
+
+LEAVE   (el actual componente)
+
+.demo-leave-from{
+  transform: translateY(0px);
+}
+
+.demo-leave-to{
   transform: translateY(300px);
   opacity: 0;
-} */
+}
+  
+*/
+
+
 
 
 

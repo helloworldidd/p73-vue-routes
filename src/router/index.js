@@ -21,7 +21,10 @@ const routes = [
     },
     {
         path: '/about',
-        component: AboutView
+        component: AboutView,
+        meta: {
+            transition: 'slide-left'
+        }
     },
     {
         path: '/contact',
@@ -31,7 +34,10 @@ const routes = [
             '/contact-us',
             '/contactanos',
             '/contactar'
-        ]
+        ],
+        meta: {
+            transition: 'fade-slow'
+        }
     },
     {
         path: "/product/:id",
