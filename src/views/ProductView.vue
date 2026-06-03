@@ -8,9 +8,7 @@ defineProps({
 
 <template>
     <div class="page">
-
         <h1>Product {{ id }}</h1>
-
     </div>
 </template>
 

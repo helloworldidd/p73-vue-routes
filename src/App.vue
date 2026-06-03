@@ -1,7 +1,11 @@
 <script setup>
 
 
+
 </script>
+
+
+
 
 <template>
   <div>
@@ -26,11 +30,33 @@
       <router-link v-for="i in 4" :key="i" :to="`/product/${i}`">Product {{ i }}</router-link>
     </nav>
 
-    <router-view />
 
 
-  </div>
+
+    <div class="router-container">
+    <router-view v-slot="{ Component, route }">
+      
+      <transition name="fade">
+      
+        <component
+          :is="Component"
+          :key="route.fullPath"
+          class="route-page"
+        />
+  
+      </transition>
+
+    </router-view>
+    </div>
+
+</div>
 </template>
+
+
+
+
+
+
 
 <style scoped>
 .logo{
@@ -63,4 +89,76 @@ nav a{
 nav a.anidacion{
     background-color: rgb(69, 137, 60);
 }
+
+
+
+.router-container{
+    position: relative;
+}
+.route-page{
+    width: 100%;
+}
+
+
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 1s ease;
+  position: absolute;
+  width: 100%;
+}
+
+
+.fade-enter-from{
+  opacity: 0;
+}
+
+.fade-enter-to{
+  opacity: 1;
+}
+
+
+
+
+.fade-leave-from {
+  opacity: 1;
+}
+
+.fade-leave-to {
+  opacity: 0;
+}
+
+/* ACTIVE */
+/* .pato-enter-active{
+  transition: all 3s ease;
+}
+.pato-leave-active{
+  transition: all 1s ease;
+} */
+
+
+/* ENTER     (el nuevo componente)*/
+/* .pato-enter-from{
+  opacity: 0;
+  transform: translateY(100px);
+}
+.pato-enter-to{
+  transform: translateY(0px);
+}
+ */
+
+
+
+/* LEAVE   (el actual componente) */
+/* .pato-leave-from{
+  transform: translateY(0px);
+}
+
+.pato-leave-to{
+  transform: translateY(300px);
+  opacity: 0;
+} */
+
+
+
 </style>
